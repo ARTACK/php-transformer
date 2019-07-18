@@ -1,11 +1,17 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace PHPTransformer\Transformer;
 
+use PHPTransformer\Exception\Transformer\ArrayTransformerException;
 
 class ArrayTransformer implements TransformerInterface
 {
+    public function supports($value): bool
+    {
+        return \is_array($value);
+    }
 
     public function toString($value): string
     {
@@ -14,12 +20,12 @@ class ArrayTransformer implements TransformerInterface
 
     public function toInt($value): int
     {
-        return (int)$this->toString($value);
+        return (int) $this->toString($value);
     }
 
     public function toFloat($value): float
     {
-        return (float)$this->toString($value);
+        return (float) $this->toString($value);
     }
 
     public function toArray($value): array
@@ -29,7 +35,7 @@ class ArrayTransformer implements TransformerInterface
 
     public function toBoolean($value): bool
     {
-        throw new \Exception('ArrayTransformer: Array can not be converted to boolean');
+        throw new ArrayTransformerException('ArrayTransformer: Array can not be converted to boolean');
     }
 
     public function toObject($value): \stdClass
@@ -39,6 +45,6 @@ class ArrayTransformer implements TransformerInterface
 
     public function toDate($value): \DateTime
     {
-        throw new \Exception('ArrayTransformer: Array can not be converted to DateTime');
+        throw new ArrayTransformerException('ArrayTransformer: Array can not be converted to DateTime');
     }
 }

@@ -1,6 +1,0 @@
-transformers:
-  - { property: jsonTransformer, class: PHPTransformer\Transformer\JsonTransformer }
-  - { property: stringTransformer, class: PHPTransformer\Transformer\StringTransformer }
-  - { property: booleanTransformer, class: PHPTransformer\Transformer\BooleanTransformer}
-  - { property: scalarTransformer, class: PHPTransformer\Transformer\ScalarTransformer }
-  - { property: arrayTransformer, class: PHPTransformer\Transformer\ArrayTransformer }

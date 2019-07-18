@@ -4,11 +4,18 @@
 class TransformerBooleanTest extends \PHPUnit\Framework\TestCase
 {
 
+    public function testBooleanFromString()
+    {
+        $transformer = \PHPTransformer\Factory::create();
+        $result = $transformer->getBooleanFromValue('true');
+        $this->assertTrue($result);
+    }
+
     public function testBooleanFromJson()
     {
         $transformer = \PHPTransformer\Factory::create();
         $json = json_encode(['a' => 'b']);
-        $this->expectException(Exception::class);
+        $this->expectException(\PHPTransformer\Exception\Transformer\JsonTransformException::class);
         $transformer->getBooleanFromValue($json);
     }
 
@@ -23,13 +30,6 @@ class TransformerBooleanTest extends \PHPUnit\Framework\TestCase
     {
         $transformer = \PHPTransformer\Factory::create();
         $result = $transformer->getBooleanFromValue(true);
-        $this->assertTrue($result);
-    }
-
-    public function testBooleanFromString()
-    {
-        $transformer = \PHPTransformer\Factory::create();
-        $result = $transformer->getBooleanFromValue('true');
         $this->assertTrue($result);
     }
 

@@ -1,11 +1,17 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace PHPTransformer\Transformer;
 
+use PHPTransformer\Exception\Transformer\StringTransformException;
 
 class StringTransformer implements TransformerInterface
 {
+    public function supports($value): bool
+    {
+        return \is_string($value);
+    }
 
     public function toString($value): string
     {
@@ -24,26 +30,27 @@ class StringTransformer implements TransformerInterface
 
     public function toArray($value): array
     {
-        return explode(',',$value);
+        return explode(',', $value);
     }
 
     public function toBoolean($value): bool
     {
-        if ($value === '') {
+        if ('' === $value || 'false' === $value || '0' === $value) {
             return false;
         }
 
-        if ($value === 'false') {
-            return false;
+        if ($value || 'true' === $value || '1' === $value) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     public function toObject($value): \stdClass
     {
         $object = new \stdClass();
         $object->value = $value;
+
         return $object;
     }
 
@@ -52,7 +59,7 @@ class StringTransformer implements TransformerInterface
         try {
             return new \DateTime($value);
         } catch (\Exception $e) {
-            throw new \Exception('StringTransformer: Faild to convert '.$value.' to DateTime, with error: '.$e->getMessage());
+            throw new StringTransformException('StringTransformer: Faild to convert '.$value.' to DateTime, with error: '.$e->getMessage());
         }
     }
 }

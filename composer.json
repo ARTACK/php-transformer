@@ -10,8 +10,7 @@
     ],
     "require": {
         "ext-json": "*",
-        "php": ">=7.1",
-        "symfony/yaml": "^4.3"
+        "php": ">=7.1"
     },
     "autoload": {
         "psr-4": {

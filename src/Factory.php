@@ -1,30 +1,35 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace PHPTransformer;
 
-use Symfony\Component\Yaml\Yaml;
+use PHPTransformer\Transformer\ArrayTransformer;
+use PHPTransformer\Transformer\BooleanTransformer;
+use PHPTransformer\Transformer\JsonTransformer;
+use PHPTransformer\Transformer\ScalarTransformer;
+use PHPTransformer\Transformer\StringTransformer;
 
 class Factory
 {
     private static $instance;
 
-    public static function create() :Transformer
+    public static function create(): Transformer
     {
-        $content = Yaml::parseFile(__DIR__.'/../config/transformer.yml');
-        $allTransformers = [];
-
-        foreach ($content['transformers'] as $transformer) {
-            $allTransformers[] = [
-              'property' => $transformer['property'],
-              'object'  => new $transformer['class'],
-            ];
-        }
+        $allTransformers = [
+            new ArrayTransformer(),
+            new BooleanTransformer(),
+            new JsonTransformer(),
+            new ScalarTransformer(),
+            new StringTransformer(),
+        ];
 
         self::$instance = new Transformer($allTransformers);
+
         return self::$instance;
     }
 
-    public static function getInstance() :Transformer
+    public static function getInstance(): Transformer
     {
         if (self::$instance) {
             return self::$instance;

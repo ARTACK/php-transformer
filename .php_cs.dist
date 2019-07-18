@@ -6,6 +6,8 @@ $finder = PhpCsFixer\Finder::create()
 
 return PhpCsFixer\Config::create()
     ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
         '@PHP71Migration' => true,
         '@PHP71Migration:risky' => true,
         'phpdoc_order' => true,
