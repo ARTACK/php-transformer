@@ -10,7 +10,7 @@ class Factory
 
     public static function create() :Transformer
     {
-        $content = Yaml::parseFile(realpath('.').'/config/transformer.yml');
+        $content = Yaml::parseFile(__DIR__.'/../config/transformer.yml');
         $allTransformers = [];
 
         foreach ($content['transformers'] as $transformer) {
