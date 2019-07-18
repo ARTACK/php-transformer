@@ -1,0 +1,16 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__.'/src')
+;
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@PHP71Migration' => true,
+        '@PHP71Migration:risky' => true,
+        'phpdoc_order' => true,
+        'ordered_imports' => true,
+        'array_syntax' => ['syntax' => 'short'],
+    ])
+    ->setFinder($finder)
+    ;
