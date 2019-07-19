@@ -7,11 +7,14 @@ git:
 
 matrix:
   include:
-    - php: 7.0
     - php: 7.1
     - php: 7.2
     - php: 7.3
   fast_finish: true
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 before_install:
   - travis_retry composer self-update && composer --version
