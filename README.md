@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/flaver12/php-transformer.svg?branch=master)](https://travis-ci.org/flaver12/php-transformer)
 [![GitHub license](https://img.shields.io/github/license/flaver12/php-transformer.svg)](https://github.com/flaver12/php-transformer)
 [![GitHub issues](https://img.shields.io/github/issues/flaver12/php-transformer.svg)](https://github.com/flaver12/php-transformer/issues)
-[![GitHub license](https://img.shields.io/github/license/flaver12/php-transformer.svg)](https://github.com/flaver12/php-transformer)
 
 This package allows you to transform data from from a api to a format that you need.
 
