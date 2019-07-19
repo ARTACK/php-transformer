@@ -25,9 +25,7 @@ class ScalarTransformer implements TransformerInterface
 
     public function toFloat($value): float
     {
-        if (\is_object($value)) {
-            throw new ScalarTransformerException('ScalarTransformer: We cant create a float from a object. Please check the documentation');
-        }
+        return (float) $value;
     }
 
     public function toArray($value): array
