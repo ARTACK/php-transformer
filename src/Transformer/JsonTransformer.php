@@ -50,7 +50,7 @@ class JsonTransformer implements TransformerInterface
 
     private function decode($json, $assoc = false)
     {
-        $array = json_decode($json, true);
+        $array = json_decode($json, $assoc);
         if (JSON_ERROR_NONE !== json_last_error()) {
             throw new JsonTransformException('Could not convert json to array, it seams that your json is invalid');
         }
